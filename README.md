@@ -4,9 +4,6 @@ Pedro
 ** TODO: Add description **
 
 * add missing app supervisor
-* pedro start
-* pedro quit
-* pedro status
 * pedro task.list
 * pedro task.show id:1
 * pedro module.list
