@@ -6,7 +6,9 @@ defmodule Pedro.Commander do
   @node :"#{@pedro_server}@#{@hostname}"
 
   def start_link do
-    Node.connect @node
+    IO.puts @node
+    e = Node.connect @node
+    IO.puts e
     IO.inspect Node.list
     GenServer.start_link(__MODULE__, :running, name: __MODULE__)
   end
@@ -16,10 +18,8 @@ defmodule Pedro.Commander do
   end
 
   def handle_call {:local, mod, func}, _from, status do
-    IO.inspect mod
-    IO.inspect func
-    e = Node.spawn(@node, Pedro.Cli.Node, :list, [])
-    IO.inspect e
+  # e = Node.spawn(@node, Pedro.Cli.Node, :list, [])
+  # IO.inspect e
     { :reply, {:local, {}}, :success }
   end
 
