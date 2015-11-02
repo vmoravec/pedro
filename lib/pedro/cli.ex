@@ -48,6 +48,13 @@ defmodule Pedro.Cli do
       end
 
       params =  values
+    # FIXME Do not call the commander here, this should be
+    # done in the Cli.* modules that need to decide when to trigger
+    #   * a local node code execution
+    #   * a http request to a remote node
+
+    # Both access methods should return the same structure of data to
+    # minimize the effort of showing them to user in terminal
     Pedro.Commander.execute(:local, cmd)
     rescue
       [ MatchError ] ->
