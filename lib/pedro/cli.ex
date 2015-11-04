@@ -13,11 +13,13 @@ defmodule Pedro.Cli do
       argv,
       switches: [
         help:   :boolean,
-        remote: :boolean
+        local:  :boolean,
+        node_name: :string
       ],
       aliases:  [
         h: :help,
-        r: :remote
+        l: :local,
+        n: :node_name
       ]
     )
 
@@ -46,19 +48,28 @@ defmodule Pedro.Cli do
       Kernel.apply(
         String.to_atom("Elixir.Pedro.Cli.#{String.capitalize(module)}"),
         String.to_atom(fun),
-        [resolve(switches, command, values)]
+        [resolve_command(switches, command, values)]
       )
     rescue
-      e in UndefinedFunctionError -> IO.puts("Command does not exist: #{inspect e}")
+      e in UndefinedFunctionError -> IO.puts("Unknown command '#{command}'\n #{e}")
     end
   end
 
-  defp resolve switches, command, values do
-    switches |> resolve_command(command, values)
-  end
+  @default_attributes [
+    node:     "pedro-server",
+    localhost: :os.getenv("HOSTNAME"),
+    remote:   false
+  ]
 
   defp resolve_command switches, command, values do
-    [local: true, node: :bla, doma: :som]
+    attributes = @default_attributes
+    if Keyword.has_key?(switches, :node_name) do
+      attributes = Keyword.merge(attributes, node: switches[:node_name])
+    end
+
+    attributes = Keyword.merge(attributes, remote: switches[:remote])
+    attributes = Keyword.merge(attributes, values: values)
+    attributes
   end
 
 end
