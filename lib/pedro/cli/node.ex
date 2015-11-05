@@ -18,7 +18,7 @@ defmodule Pedro.Cli.Node do
     if options[:remote] do
       IO.puts "Sending http request to remote pedro about his status.."
     else
-      Pedro.Runner.local(node_name, fn -> IO.puts(Nodesss.self) end, [])
+      Pedro.Runner.local(node_name, NodeStatusServices, [])
     end
     #TODO now lookup the node that was specified in the list of nodes
     # that will be created before this event from either database or a config file
