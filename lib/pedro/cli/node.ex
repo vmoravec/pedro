@@ -16,6 +16,7 @@ defmodule Pedro.Cli.Node do
     Logger.info options[:remote]
     node_name = :"#{options[:node]}@#{options[:localhost]}"
     if options[:remote] do
+      # Pedro.Api.get(node_name, "/status")
       IO.puts "Sending http request to remote pedro about his status.."
     else
       Pedro.Runner.local(node_name, NodeStatusServices, [])
