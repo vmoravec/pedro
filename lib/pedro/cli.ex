@@ -4,6 +4,8 @@ defmodule Pedro.Cli do
   Modules nested in the Pedro.Cli namespace contain command implementation
   """
 
+  alias Pedro.Env
+
   def main(argv) do
     parse_args(argv)
   end
@@ -13,13 +15,13 @@ defmodule Pedro.Cli do
       argv,
       switches: [
         help:   :boolean,
-        local:  :boolean,
-        node_name: :string
+        node_name: :string,
+        use_api: :boolean
       ],
       aliases:  [
         h: :help,
-        l: :local,
-        n: :node_name
+        n: :node_name,
+        p: :use_api
       ]
     )
 
@@ -48,28 +50,11 @@ defmodule Pedro.Cli do
       Kernel.apply(
         String.to_atom("Elixir.Pedro.Cli.#{String.capitalize(module)}"),
         String.to_atom(fun),
-        [resolve_command(switches, command, values)]
+        [Env.detect_from_cli(switches, command, values)]
       )
     rescue
-      e in UndefinedFunctionError -> IO.puts("Unknown command '#{command}'\n #{e}")
+      e in UndefinedFunctionError -> IO.puts("Unknown command '#{command}'\n #{inspect e}")
     end
-  end
-
-  @default_attributes [
-    node:     "pedro-server",
-    localhost: :os.getenv("HOSTNAME"),
-    remote:   false
-  ]
-
-  defp resolve_command switches, command, values do
-    attributes = @default_attributes
-    if Keyword.has_key?(switches, :node_name) do
-      attributes = Keyword.merge(attributes, node: switches[:node_name])
-    end
-
-    attributes = Keyword.merge(attributes, remote: switches[:remote])
-    attributes = Keyword.merge(attributes, values: values)
-    attributes
   end
 
 end
