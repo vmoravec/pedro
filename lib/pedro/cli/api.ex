@@ -1,4 +1,4 @@
-defmodule Pedro.Api do
+defmodule Pedro.Cli.Api do
   @version :v1
   @url  "localhost"
   @port "5511"

@@ -13,7 +13,7 @@ defmodule Pedro.Mixfile do
   #
   # Type `mix help compile.app` for more information
   def application do
-    [applications: [:logger, :ibrowse, :yamerl],
+    [applications: [:logger, :ibrowse],
      mod: {Pedro, []}]
   end
 
@@ -29,8 +29,7 @@ defmodule Pedro.Mixfile do
   defp deps do
     [
       {:ibrowse, github: "cmullaparthi/ibrowse", tag: "v4.1.2"},
-      {:httpotion, "~> 2.1.0"},
-      {:yamerl, github: "yakaz/yamerl"}
+      {:httpotion, "~> 2.1.0"}
     ]
   end
 

@@ -1,4 +1,4 @@
-defmodule Pedro.Env do
+defmodule Pedro.Cli.Env do
   @default_attributes [
     node_name:     "pedro-server",
     hostname: :os.getenv("HOSTNAME"),
@@ -11,10 +11,6 @@ defmodule Pedro.Env do
     |> extract_values(values)
     |> extract_command(command)
     |> update_node_name
-  end
-
-  def load_pedrorc do
-    :yamerl_constr.file("#{:os.getenv("HOME")}/.pedrorc")
   end
 
   defp extract_switches attrs, switches do

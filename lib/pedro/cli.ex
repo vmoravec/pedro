@@ -4,7 +4,7 @@ defmodule Pedro.Cli do
   Modules nested in the Pedro.Cli namespace contain command implementation
   """
 
-  alias Pedro.Env
+  alias Pedro.Cli.Env
 
   def main(argv) do
     parse_args(argv)
@@ -48,7 +48,7 @@ defmodule Pedro.Cli do
     [ module, fun ] = String.split(command, ".")
     try do
       Kernel.apply(
-        String.to_atom("Elixir.Pedro.Cli.#{String.capitalize(module)}"),
+        String.to_atom("Elixir.Pedro.Cli.Command.#{String.capitalize(module)}"),
         String.to_atom(fun),
         [Env.detect_from_cli(switches, command, values)]
       )

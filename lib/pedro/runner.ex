@@ -1,4 +1,4 @@
-defmodule Pedro.Runner do
+defmodule Pedro.Cli.Runner do
   use GenServer
 
   @timeout 5
@@ -14,7 +14,7 @@ defmodule Pedro.Runner do
   def handle_call {:local, node, mod, fun, args}, _from, status do
     case :rpc.call(node, mod, fun, args, @timeout) do
       {:badrpc, reason } -> { :reply, {:error, reason}, :error}
-      result             -> { :reply, {:ok, result }, :success}
+      result             -> { :reply, result, :success}
     end
   end
 end

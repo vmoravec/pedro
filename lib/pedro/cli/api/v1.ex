@@ -1,4 +1,4 @@
-defmodule Pedro.Api.V1 do
+defmodule Pedro.Cli.Api.V1 do
   use HTTPotion.Base
 
   def process_url url do
