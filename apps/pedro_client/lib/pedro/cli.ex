@@ -48,7 +48,7 @@ defmodule PedroClient.Cli do
     [ module, fun ] = String.split(command, ".")
     try do
       Kernel.apply(
-        String.to_atom("Elixir.Pedro.Cli.Command.#{String.capitalize(module)}"),
+        String.to_atom("Elixir.PedroClient.Cli.Command.#{String.capitalize(module)}"),
         String.to_atom(fun),
         [Env.detect_from_cli(switches, command, values)]
       )

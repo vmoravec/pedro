@@ -20,7 +20,6 @@ defmodule Pedro.Mixfile do
   # and cannot be accessed from applications inside the apps folder
   defp deps do
     [
-      {:httpoison, "~> 0.8.0"}
     ]
   end
 end

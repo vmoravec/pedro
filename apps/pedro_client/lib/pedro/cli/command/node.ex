@@ -1,7 +1,7 @@
 defmodule PedroClient.Cli.Command.Node do
-  alias Pedro.Cli.Api
-  alias Pedro.Cli.Runner
-  alias Pedro.Cli.View
+  alias PedroClient.Cli.Api
+  alias PedroClient.Cli.Runner
+  alias PedroClient.Cli.View
 
   def list params do
     # 1. Detect default local node "pedro-server"
