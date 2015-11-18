@@ -1,4 +1,4 @@
-defmodule Pedro.Cli.Runner do
+defmodule PedroClient.Cli.Runner do
   use GenServer
 
   @timeout 5

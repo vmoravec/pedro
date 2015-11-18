@@ -1,4 +1,4 @@
-defmodule Pedro.Cli.View.Node do
+defmodule PedroClient.Cli.View.Node do
   def status response, params do
     # Response is always a complex data structure composed of
     # tuples and lists and so on. There is a implicit contract

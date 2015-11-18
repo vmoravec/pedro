@@ -1,4 +1,4 @@
-defmodule Pedro.Cli.Command.Node do
+defmodule PedroClient.Cli.Command.Node do
   alias Pedro.Cli.Api
   alias Pedro.Cli.Runner
   alias Pedro.Cli.View

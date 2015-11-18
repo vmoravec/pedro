@@ -1,4 +1,4 @@
-defmodule Pedro do
+defmodule PedroClient do
   use Application
 
   # See http://elixir-lang.org/docs/stable/elixir/Application.html
@@ -9,11 +9,11 @@ defmodule Pedro do
     children = [
       # Define workers and child supervisors to be supervised
       # worker(Pedro.Worker, [arg1, arg2, arg3])
-      worker(Pedro.Cli.Runner, [])
+      worker(PedroClient.Cli.Runner, [])
     ]
     # See http://elixir-lang.org/docs/stable/elixir/Supervisor.html
     # for other strategies and supported options
-    opts = [strategy: :one_for_one, name: Pedro.Supervisor]
+    opts = [strategy: :one_for_one, name: PedroClient.Supervisor]
     Supervisor.start_link(children, opts)
   end
 end

@@ -1,10 +1,10 @@
-defmodule Pedro.Cli do
+defmodule PedroClient.Cli do
   @moduledoc """
   Handle command line parsing and dispatch functions
   Modules nested in the Pedro.Cli namespace contain command implementation
   """
 
-  alias Pedro.Cli.Env
+  alias PedroClient.Cli.Env
 
   def main(argv) do
     parse_args(argv)

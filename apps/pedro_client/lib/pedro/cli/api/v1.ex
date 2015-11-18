@@ -1,5 +1,5 @@
-defmodule Pedro.Cli.Api.V1 do
-  use HTTPotion.Base
+defmodule PedroClient.Cli.Api.V1 do
+  use HTTPoison.Base
 
   def process_url url do
     "http://manacor.suse.cz:3000/api/v1/" <> url
