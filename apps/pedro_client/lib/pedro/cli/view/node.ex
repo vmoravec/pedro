@@ -22,7 +22,6 @@ defmodule PedroClient.Cli.View.Node do
   end
 
   def list response, params do
-    IO.inspect response
-    IO.inspect params
+    IO.puts "SHOWING VIEW FOR lsit"
   end
 end

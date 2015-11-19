@@ -7,8 +7,8 @@ defmodule PedroClient.Cli.Runner do
     GenServer.start_link(__MODULE__, :running, name: __MODULE__)
   end
 
-  def run node, mod, fun \\ :call, args do
-    GenServer.call(__MODULE__, { :local, node, mod, fun, args })
+  def run_service node, module, args do
+    GenServer.call(__MODULE__, { :local, node, :"Elixir.PedroServer.Service.#{module}", :call, args })
   end
 
   def handle_call {:local, node, mod, fun, args}, _from, status do

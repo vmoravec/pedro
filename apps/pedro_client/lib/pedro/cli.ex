@@ -28,10 +28,16 @@ defmodule PedroClient.Cli do
     case result do
       { [ help: true ], _, _ }
         -> help
-
+      { [], ["help"], [] }
+        -> help
+      { [], ["help", command], [] }
+        -> help(command)
+      { [], ["h"], [] }
+        -> help
+      { [], ["h", command], [] }
+        -> help(command)
       {[], [], []}
         -> help
-
       { switches, commands, _ }
         -> run_action(switches, commands)
 
@@ -40,7 +46,12 @@ defmodule PedroClient.Cli do
   end
 
   def help do
-    IO.puts "Pedro help: comes soon"
+    IO.puts "  pedro node.list               # List all known nodes"
+    IO.puts "  pedro node.status NODE_NAME   # Show status info about a specific node"
+  end
+
+  def help command do
+    help
   end
 
   defp run_action switches, commands do
@@ -53,7 +64,7 @@ defmodule PedroClient.Cli do
         [Env.detect_from_cli(switches, command, values)]
       )
     rescue
-      e in UndefinedFunctionError -> IO.puts("Unknown command '#{command}'\n #{inspect e}")
+      e in UndefinedFunctionError -> IO.puts("Unknown command '#{command} error #{inspect e}'\n")
     end
   end
 

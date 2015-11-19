@@ -10,7 +10,13 @@ defmodule PedroClient.Cli.Env do
     |> extract_switches(switches)
     |> extract_values(values)
     |> extract_command(command)
+    |> extract_protocol
     |> update_node_name
+    |> add_node
+  end
+
+  defp add_node attrs do
+    Keyword.merge(attrs, node: :"#{attrs[:node_name]}@#{attrs[:hostname]}")
   end
 
   defp extract_switches attrs, switches do
@@ -19,6 +25,15 @@ defmodule PedroClient.Cli.Env do
 
   defp extract_values attrs, values do
     Keyword.merge(attrs, values: values)
+  end
+
+  defp extract_protocol attrs do
+    protocol = if attrs[:api] do
+      :api
+    else
+      :rpc
+    end
+    Keyword.merge(attrs, protocol: protocol)
   end
 
   defp extract_command attrs, command do
