@@ -9,7 +9,7 @@ defmodule PedroClient do
     children = [
       # Define workers and child supervisors to be supervised
       # worker(Pedro.Worker, [arg1, arg2, arg3])
-      worker(PedroClient.Cli.Runner, [])
+      worker(PedroClient.Cli.RemoteService, [])
     ]
     # See http://elixir-lang.org/docs/stable/elixir/Supervisor.html
     # for other strategies and supported options

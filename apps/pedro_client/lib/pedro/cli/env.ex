@@ -1,7 +1,8 @@
 defmodule PedroClient.Cli.Env do
   @default_attributes [
-    node_name:     "pedro-server",
-    hostname: :os.getenv("HOSTNAME"),
+    server_name: "pedro-server",
+    server_host: :os.getenv("HOSTNAME"),
+    api_url: "localhost",
     api: false
   ]
 
@@ -11,12 +12,8 @@ defmodule PedroClient.Cli.Env do
     |> extract_values(values)
     |> extract_command(command)
     |> extract_protocol
-    |> update_node_name
-    |> add_node
-  end
-
-  defp add_node attrs do
-    Keyword.merge(attrs, node: :"#{attrs[:node_name]}@#{attrs[:hostname]}")
+    |> update_server_attributes
+    |> update_server_api
   end
 
   defp extract_switches attrs, switches do
@@ -28,11 +25,7 @@ defmodule PedroClient.Cli.Env do
   end
 
   defp extract_protocol attrs do
-    protocol = if attrs[:api] do
-      :api
-    else
-      :rpc
-    end
+    protocol = if attrs[:api], do: :api, else: :rpc
     Keyword.merge(attrs, protocol: protocol)
   end
 
@@ -40,17 +33,36 @@ defmodule PedroClient.Cli.Env do
     Keyword.merge(attrs, command: command)
   end
 
-  defp update_node_name attrs do
-    if Keyword.has_key?(attrs, :node_name) do
-      attrs
-    else
-      Keyword.merge(attrs, node_name: get_node_name)
+  defp update_server_api attrs do
+    case :os.getenv("PEDRO_API") do
+      "" ->
+        attrs
+      false ->
+        attrs
+      [] ->
+        attrs
+      url ->
+        Keyword.merge(attrs, api_url: to_string(url))
     end
   end
 
-  defp get_node_name do
-    :os.getenv("PEDRO_SERVER")
+  defp update_server_attributes attrs do
+    server = to_string(:os.getenv("PEDRO_SERVER"))
+    if String.length(server) > 0 do
+      unless Regex.match?(~r/@/, server), do: raise "Wrong server name: '#{server}'"
+      if server do
+        [server_name, server_host] = String.split(server, "@")
+        Keyword.merge(attrs,
+          server_name: server_name,
+          server_host: server_host,
+          server: :"#{server}"
+        )
+      else
+        Keyword.merge(attrs, server: :"#{attrs[:server_name]}@#{attrs[:server_host]}")
+      end
+    else
+      Keyword.merge(attrs, server: :"#{attrs[:server_name]}@#{attrs[:server_host]}")
+    end
   end
-
 end
 

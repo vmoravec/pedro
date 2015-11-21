@@ -16,12 +16,14 @@ defmodule PedroClient.Cli do
       switches: [
         help:   :boolean,
         node_name: :string,
-        use_api: :boolean
+        use_api: :boolean,
+        verbose: :boolean
       ],
       aliases:  [
         h: :help,
         n: :node_name,
-        p: :use_api
+        p: :use_api,
+        v: :verbose
       ]
     )
 
@@ -51,12 +53,19 @@ defmodule PedroClient.Cli do
   end
 
   def help command do
+    IO.puts command
     help
   end
 
   defp run_action switches, commands do
     [ command | values ] = commands
     [ module, fun ] = String.split(command, ".")
+
+    if fun == nil do
+      fun = module
+      module = "Default"
+    end
+
     try do
       Kernel.apply(
         String.to_atom("Elixir.PedroClient.Cli.#{String.capitalize(module)}"),

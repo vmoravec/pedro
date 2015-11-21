@@ -3,45 +3,93 @@ defmodule PedroClient.Cli.Node do
   Handles requests for nodes' information.
   """
   alias PedroClient.Cli.Api
-  alias PedroClient.Cli.Runner
+  alias PedroClient.Cli.RemoteService
   alias PedroClient.Cli.View
 
   @doc """
   List all nodes
   """
-  def list params do
-    case params[:protocol] do
-      :api -> Api.get("/nodes", params) |> to_response(params)
-      :rpc -> Runner.run_service(params[:node], :ListNodes, [params]) |> to_response(params)
+  def list env do
+    response = case env[:protocol] do
+      :api ->
+        Api.get("/nodes", env)
+        |> to_response(env)
+      :rpc ->
+        RemoteService.run(env, :ListNodes)
+        |> to_response(env)
     end
-    |> View.Node.list(params)
-    |> run_exit(params)
+    response |> View.Node.list
+    response |> run_exit
   end
 
-  def status params do
-    node = :"#{params[:node_name]}@#{params[:hostname]}"
-    if params[:api] do
-      Api.get("/status", params)
-    else
-      Runner.run_service(node, :ShowNodeStatus, [params])
+  def status env do
+    response = case env[:protocol] do
+      :api ->
+        Api.get("/status", env)
+        |> to_response(env)
+      :rpc ->
+        RemoteService.run(env, :ShowNodeStatus)
+        |> to_response(env)
     end
-    |> View.Node.status(params)
-    |> run_exit(params)
+    response |> View.Node.status
+    response |> run_exit
   end
 
-  def run_exit result, params do
-    if result do
-      IO.puts "Response was not successful"
-      System.halt 1
-    else
-      System.halt 0
+  def run_exit response do
+    case response do
+      %{ok?: true } ->
+        System.halt 0
+      %{ok?: false, message: message} ->
+        IO.puts message
+        System.halt 1
     end
   end
 
-  def to_response data, params do
-    IO.inspect params
-    IO.inspect data
-    data
+  defp to_response data, env do
+    case env[:protocol] do
+      :api -> handle_http_response(data)
+      :rpc -> handle_rpc_response(data, env)
+    end
+  end
+
+  defp handle_rpc_response data, env do
+    case data do
+      {:error, {:EXIT, error}} ->
+        %{ok?: false, message: "Error, sure it's a bug: #{inspect error}",  data: error}
+      {:error, :nodedown } ->
+        %{ok?: false, message: "Node #{env[:server]} is not available", data: nil}
+      {:error, status } ->
+        %{ok?: false, message: "ERROR with status #{inspect status}", data: data}
+      {:ok, response } ->
+        %{ok?: true, data: response}
+    end
+  end
+
+  defp handle_http_response response do
+    case response do
+      { %HTTPoison.Response{}, _env } ->
+        decode_http_response(response)
+      { %HTTPoison.Error{}, _env } ->
+        %{ok?: false, data: response, message: decode_failed_api(response)}
+    end
+  end
+
+  defp decode_http_response response do
+    {data, env} = response
+    cond do
+      data.status_code > 200 ->
+        %{ok?: false, error?: true, message: "Problem with API request at #{env[:request_url]},
+        return status: #{data.status_code}", data: data}
+    end
+  end
+
+  defp decode_failed_api response do
+    messages = ["\nAPI request failed."]
+    case response do
+      { %HTTPoison.Error{reason: :econnrefused}, env } ->
+        messages = [ "Could not connect to node api at '#{env[:request_url]}'" | messages ]
+    end
+    Enum.join(messages)
   end
 
 end
