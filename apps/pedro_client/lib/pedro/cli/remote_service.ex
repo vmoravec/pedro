@@ -1,4 +1,4 @@
-defmodule PedroClient.Cli.RemoteService do
+defmodule Pedro.Client.Cli.RemoteService do
   use GenServer
 
   @timeout 5
@@ -8,7 +8,7 @@ defmodule PedroClient.Cli.RemoteService do
   end
 
   def run env, module do
-    GenServer.call(__MODULE__, {env, :"Elixir.PedroServer.Service.#{module}"})
+    GenServer.call(__MODULE__, {env, :"Elixir.Pedro.Server.Service.#{module}"})
   end
 
   def handle_call {env, module}, _from, status do

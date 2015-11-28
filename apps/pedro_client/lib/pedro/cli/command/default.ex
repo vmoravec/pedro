@@ -1,2 +1,2 @@
-defmodule PedroClient.Cli.Default do
+defmodule Pedro.Client.Cli.Default do
 end

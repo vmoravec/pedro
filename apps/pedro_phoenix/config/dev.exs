@@ -6,22 +6,30 @@ use Mix.Config
 # The watchers configuration can be used to run external
 # watchers to your application. For example, we use it
 # with brunch.io to recompile .js and .css sources.
-config :phoenix, Pedro.Phoenix.Endpoint,
+config :pedro_phoenix, Pedro.Endpoint,
   http: [port: 4000],
   debug_errors: true,
   code_reloader: true,
   cache_static_lookup: false,
-  watchers: [node: ["lib/phoenix/node_modules/brunch/bin/brunch", "watch"]]
+  check_origin: false,
+  watchers: [node: ["node_modules/brunch/bin/brunch", "watch", "--stdin"]]
 
 # Watch static and templates for browser reloading.
-config :phoenix, Pedro.Phoenix.Endpoint,
+config :pedro_phoenix, Pedro.Endpoint,
   live_reload: [
     patterns: [
-      ~r{lib/phoenix/priv/static/.*(js|css|png|jpeg|jpg|gif)$},
-      ~r{lib/phoenix/web/views/.*(ex)$},
-      ~r{lib/phoenix/web/templates/.*(eex)$}
+      ~r{priv/static/.*(js|css|png|jpeg|jpg|gif|svg)$},
+      ~r{web/views/.*(ex)$},
+      ~r{web/templates/.*(eex)$}
     ]
   ]
 
 # Do not include metadata nor timestamps in development logs
 config :logger, :console, format: "[$level] $message\n"
+
+# Set a higher stacktrace during development.
+# Do not configure such in production as keeping
+# and calculating stacktraces is usually expensive.
+config :phoenix, :stacktrace_depth, 20
+
+# Configure your database

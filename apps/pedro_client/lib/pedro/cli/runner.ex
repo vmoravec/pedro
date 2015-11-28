@@ -1,4 +1,4 @@
-defmodule PedroClient.Cli.Runner do
+defmodule Pedro.Client.Cli.Runner do
   use GenServer
 
   @timeout 5
@@ -8,7 +8,7 @@ defmodule PedroClient.Cli.Runner do
   end
 
   def run_service node, module, args do
-    GenServer.call(__MODULE__, { :local, node, :"Elixir.PedroServer.Service.#{module}", :call, args })
+    GenServer.call(__MODULE__, { :local, node, :"Elixir.Pedro.Server.Service.#{module}", :call, args })
   end
 
   def handle_call {:local, node, mod, fun, args}, _from, status do

@@ -1,4 +1,4 @@
-defmodule PedroClient.Cli.System do
+defmodule Pedro.Client.Cli.System do
   def info env do
     IO.puts "INFO FOOSOSO"
   end

@@ -22,21 +22,3 @@ use Mix.Config
 # here (which is why it is important to import them last).
 #
 #     import_config "#{Mix.env}.exs"
-
-# Configures the endpoint
-config :phoenix, Pedro.Phoenix.Endpoint,
-  url: [host: "localhost"],
-  root: Path.dirname(__DIR__),
-  secret_key_base: "RLEqusaa13N9gAxBTbp31U9AmcE/5C13onMXWOO9e8SZFOEfft/0pjWKX85bU4uF",
-  debug_errors: false,
-  pubsub: [name: Phoenix.PubSub,
-           adapter: Phoenix.PubSub.PG2]
-
-# Configures Elixir's Logger
-config :logger, :console,
-  format: "$time $metadata[$level] $message\n",
-  metadata: [:request_id]
-
-# Import environment specific config. This must remain at the bottom
-# of this file so it overrides the configuration defined above.
-import_config "#{Mix.env}.exs"

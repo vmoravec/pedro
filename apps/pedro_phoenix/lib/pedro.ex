@@ -1,4 +1,4 @@
-defmodule Pedro.Server do
+defmodule Pedro.Phoenix do
   use Application
 
   # See http://elixir-lang.org/docs/stable/elixir/Application.html
@@ -7,14 +7,15 @@ defmodule Pedro.Server do
     import Supervisor.Spec, warn: false
 
     children = [
-      # supervisor(Pedro.Manager, []),
-      # Define workers and child supervisors to be supervised
-      # worker(PedroServer.Worker, [arg1, arg2, arg3])
+      # Start the endpoint when the application starts
+      supervisor(Pedro.Endpoint, []),
+      # Here you could define other workers and supervisors as children
+      # worker(Pedro.Worker, [arg1, arg2, arg3]),
     ]
 
     # See http://elixir-lang.org/docs/stable/elixir/Supervisor.html
     # for other strategies and supported options
-    opts = [strategy: :one_for_one, name: Pedro.Server.Supervisor]
+    opts = [strategy: :one_for_one, name: Pedro.Phoenix.Supervisor]
     Supervisor.start_link(children, opts)
   end
 

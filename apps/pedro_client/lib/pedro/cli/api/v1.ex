@@ -1,4 +1,4 @@
-defmodule PedroClient.Cli.Api.V1 do
+defmodule Pedro.Client.Cli.Api.V1 do
   use HTTPoison.Base
 
   def send_request method, url, path do
