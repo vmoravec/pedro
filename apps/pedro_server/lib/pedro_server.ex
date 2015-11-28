@@ -7,7 +7,7 @@ defmodule Pedro.Server do
     import Supervisor.Spec, warn: false
 
     children = [
-      supervisor(Pedro.Phoenix.Endpoint, []),
+      supervisor(Pedro.Endpoint, []),
       # supervisor(Pedro.Manager, []),
       # Define workers and child supervisors to be supervised
       # worker(PedroServer.Worker, [arg1, arg2, arg3])
@@ -15,14 +15,14 @@ defmodule Pedro.Server do
 
     # See http://elixir-lang.org/docs/stable/elixir/Supervisor.html
     # for other strategies and supported options
-    opts = [strategy: :one_for_one, name: PedroServer.Supervisor]
+    opts = [strategy: :one_for_one, name: Pedro.Server.Supervisor]
     Supervisor.start_link(children, opts)
   end
 
   # Tell Phoenix to update the endpoint configuration
   # whenever the application is updated.
   def config_change(changed, _new, removed) do
-    Fenix.Endpoint.config_change(changed, removed)
+    Pedro.Endpoint.config_change(changed, removed)
     :ok
   end
 end
