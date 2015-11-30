@@ -1,4 +1,4 @@
-defmodule Pedro.Client.Cli.RemoteService do
+defmodule Pedro.Cli.RemoteService do
   use GenServer
 
   @timeout 5

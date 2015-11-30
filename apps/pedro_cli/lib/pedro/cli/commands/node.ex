@@ -1,10 +1,10 @@
-defmodule Pedro.Client.Cli.Node do
+defmodule Pedro.Cli.Command.Node do
   @moduledoc """
   Handles requests for nodes' information.
   """
-  alias Pedro.Client.Cli.Api
-  alias Pedro.Client.Cli.RemoteService
-  alias Pedro.Client.Cli.View
+  alias Pedro.Cli.Api
+  alias Pedro.Cli.RemoteService
+  alias Pedro.Cli.View
 
   @doc """
   List all nodes

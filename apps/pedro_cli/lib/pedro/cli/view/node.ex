@@ -1,4 +1,4 @@
-defmodule Pedro.Client.Cli.View.Node do
+defmodule Pedro.Cli.View.Node do
   def status response do
     IO.inspect response.data.body
   end

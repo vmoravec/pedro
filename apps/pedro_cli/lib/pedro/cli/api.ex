@@ -1,4 +1,4 @@
-defmodule Pedro.Client.Cli.Api do
+defmodule Pedro.Cli.Api do
   @version "v1"
   @port "3000"
   @api_prefix "/api/"

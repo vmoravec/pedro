@@ -1,4 +1,4 @@
-defmodule PedroClientTest do
+defmodule Pedro.Cli.Test do
   use ExUnit.Case
 
   test "the truth" do

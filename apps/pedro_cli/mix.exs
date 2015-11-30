@@ -1,8 +1,8 @@
-defmodule Pedro.Client.Mixfile do
+defmodule Pedro.Cli.Mixfile do
   use Mix.Project
 
   def project do
-    [app: :pedro_client,
+    [app: :pedro_cli,
      version: "0.0.1",
      deps_path: "../../deps",
      lockfile: "../../mix.lock",
@@ -16,7 +16,7 @@ defmodule Pedro.Client.Mixfile do
   # Type `mix help compile.app` for more information
   def application do
     [applications: [:logger, :httpoison],
-     mod: {Pedro.Client, []}]
+     mod: {Pedro.Cli, []}]
   end
 
   # Dependencies can be Hex packages:
@@ -36,7 +36,7 @@ defmodule Pedro.Client.Mixfile do
 
   defp escript_config do
     [
-      main_module: Pedro.Client.Cli,
+      main_module: Pedro.Cli,
       emu_args: " -sname pedro -setcookie pedro-cookie"
     ]
   end

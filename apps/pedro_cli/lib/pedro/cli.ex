@@ -1,10 +1,10 @@
-defmodule Pedro.Client.Cli do
+defmodule Pedro.Cli do
   @moduledoc """
   Handle command line parsing and dispatch functions
   Modules nested in the Pedro.Cli namespace contain command implementation
   """
 
-  alias Pedro.Client.Cli.Env
+  alias Pedro.Cli.Env
 
   def main(argv) do
     parse_args(argv)
@@ -68,7 +68,7 @@ defmodule Pedro.Client.Cli do
 
     try do
       Kernel.apply(
-        String.to_atom("Elixir.Pedro.Client.Cli.#{String.capitalize(module)}"),
+        String.to_atom("Elixir.Pedro.Cli.Command.#{String.capitalize(module)}"),
         String.to_atom(fun),
         [Env.detect_from_cli(switches, command, values)]
       )

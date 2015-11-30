@@ -1,4 +1,4 @@
-defmodule Pedro.Client.Cli.Env do
+defmodule Pedro.Cli.Env do
   @default_attributes [
     server_name: "pedro-server",
     server_host: :os.getenv("HOSTNAME"),
