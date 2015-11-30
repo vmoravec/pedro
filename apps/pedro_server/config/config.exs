@@ -24,3 +24,9 @@ config :mnesia, :dir, "db"
 # here (which is why it is important to import them last).
 #
 #     import_config "#{Mix.env}.exs"
+# Configure your database
+config :pedro_server, Pedro.Repo,
+  adapter: Sqlite.Ecto,
+  database: "db/pedro_dev.sqlite",
+  pool_size: 10
+

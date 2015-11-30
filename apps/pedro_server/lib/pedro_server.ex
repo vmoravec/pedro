@@ -9,6 +9,7 @@ defmodule Pedro.Server do
     children = [
       # supervisor(Pedro.Manager, []),
       # Define workers and child supervisors to be supervised
+      worker(Pedro.Repo, []),
       # worker(PedroServer.Worker, [arg1, arg2, arg3])
     ]
 
