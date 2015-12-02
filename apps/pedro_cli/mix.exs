@@ -37,7 +37,7 @@ defmodule Pedro.Cli.Mixfile do
 
   defp escript_config do
     [
-      main_module: Pedro.Cli,
+      main_module: Pedro.Cli.Ctl,
       emu_args: " -sname pedro -setcookie pedro-cookie"
     ]
   end

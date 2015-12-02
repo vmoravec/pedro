@@ -1,4 +1,5 @@
-defmodule Pedro.Cli do
+defmodule Pedro.Cli.Ctl do
+
   @moduledoc """
   Handle command line parsing and dispatch functions
   Modules nested in the Pedro.Cli namespace contain command implementation
