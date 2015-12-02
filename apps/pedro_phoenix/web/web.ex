@@ -18,10 +18,10 @@ defmodule Pedro.Web do
 
   def model do
     quote do
-     #use Ecto.Model
+      use Ecto.Model
 
-     #import Ecto.Changeset
-     #import Ecto.Query, only: [from: 1, from: 2]
+      import Ecto.Changeset
+      import Ecto.Query, only: [from: 1, from: 2]
     end
   end
 
@@ -29,9 +29,9 @@ defmodule Pedro.Web do
     quote do
       use Phoenix.Controller
 
-     #alias Pedro.Repo
-     #import Ecto.Model
-     #import Ecto.Query, only: [from: 1, from: 2]
+      alias Pedro.Repo
+      import Ecto.Model
+      import Ecto.Query, only: [from: 1, from: 2]
 
       import Pedro.Router.Helpers
     end
@@ -61,9 +61,9 @@ defmodule Pedro.Web do
     quote do
       use Phoenix.Channel
 
-#     alias Pedro.Repo
-#     import Ecto.Model
-#     import Ecto.Query, only: [from: 1, from: 2]
+      alias Pedro.Repo
+      import Ecto.Model
+      import Ecto.Query, only: [from: 1, from: 2]
     end
   end
 

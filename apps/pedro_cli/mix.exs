@@ -2,7 +2,8 @@ defmodule Pedro.Cli.Mixfile do
   use Mix.Project
 
   def project do
-    [app: :pedro_cli,
+    [
+     app: :pedro_cli,
      version: "0.0.1",
      deps_path: "../../deps",
      lockfile: "../../mix.lock",
