@@ -10,6 +10,8 @@ defmodule Pedro.Server do
       # supervisor(Pedro.Manager, []),
       # Define workers and child supervisors to be supervised
       worker(Pedro.Repo, []),
+      worker(Pedro.Command, []),
+      worker(Pedro.Query, [])
       # worker(PedroServer.Worker, [arg1, arg2, arg3])
     ]
 
