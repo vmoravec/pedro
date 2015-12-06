@@ -1,4 +1,4 @@
-defmodule NodeService do
+defmodule Pedro.NodeService do
   use Pedro.Service
 
   alias Pedro.Schema.Node
