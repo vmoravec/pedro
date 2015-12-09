@@ -10,8 +10,13 @@ defmodule Pedro.Schema.Node do
   @required_fields ~w(name)
   @optional_fields ~w()
 
-  def changeset model, params \\ :empty  do
+  #TODO
+  def changeset :create, params do
+  end
+
+  def changeset :update, model, params \\ :empty  do
     model
     |> cast(params, @required_fields, @optional_fields)
   end
+
 end

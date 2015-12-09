@@ -6,6 +6,8 @@ defmodule Pedro.Server do
   def start(_type, _args) do
     import Supervisor.Spec, warn: false
 
+    update_node
+
     children = [
       # supervisor(Pedro.Manager, []),
       # Define workers and child supervisors to be supervised
@@ -26,5 +28,9 @@ defmodule Pedro.Server do
   def config_change(changed, _new, removed) do
     Pedro.Endpoint.config_change(changed, removed)
     :ok
+  end
+
+  def update_node do
+    :net_kernel.start([:"server@pedro", :shortnames])
   end
 end
