@@ -36,7 +36,7 @@ defmodule Pedro.Server.Mixfile do
   # Type `mix help deps` for examples and options
   defp deps do
     [
-      {:sqlite_ecto, "~> 0.5.0"}
+      {:sqlite_ecto, "~> 1.0.2"}
     ]
   end
 

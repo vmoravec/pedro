@@ -3,47 +3,42 @@ defmodule Pedro.Schema.Node do
 
   schema "node" do
     field :name
+    field :type
     field :started_at, Ecto.DateTime
     timestamps
   end
 
-  @repo Pedro.Repo
-  @required_fields ~w(name)
+  @required_fields ~w(name started_at type)
   @optional_fields ~w()
 
-  def start! do
-    pupdate(%{started_at: Ecto.DateTime.local})
+  def mark_started do
+    current = get_current
+    changeset(:update, current, %{started_at: Ecto.DateTime.local})
+    |> repo.update
   end
 
-  def pupdate(params) when is_map(params) do
-    pupdate(@repo, params[:id], Map.delete(params, :id))
+  def get_current do
+    node_name = Application.get_env(:pedro_server, :node_name)
+    node_type = Application.get_env(:pedro_server, :node_type)
+    repo.get_by(Node, %{name: to_string(node_name), type: to_string(node_type)})
   end
 
-  def pupdate(params) when is_list(params) do
-    pupdate(@repo, params[:id], Keyword.delete(params, :id))
-  end
-
-  def pupdate id, params do
-    pupdate(@repo, id, params)
-  end
-
-  def pupdate(repo, id, params) when is_map(params) do
-    changeset(:update, Map.merge(params, %{id: id}))
-   #repo.update(changeset(:update, Map.merge(params, %{id: id})))
-  end
-
-  def pupdate(repo, id, params) when is_list(params) do
-    params = Enum.into(params, %{id: id})
-    changeset(:update, params)
-  # repo.update(changeset(:update, params))
+  def insert_node node_name, node_type do
+    changeset(:create, %{name: to_string(node_name), type: to_string(node_type)})
+    |> repo.insert
   end
 
   def changeset :create, params do
-    %Pedro.Schema.Node{started_at: Ecto.DateTime.local}
+    %Node{
+      name: params[:node_name],
+      type: params[:node_type],
+      started_at: Ecto.DateTime.local
+    }
+    |> cast(params, @required_fields, @optional_fields)
   end
 
-  def changeset :update, params \\ :empty  do
-    __MODULE__
+  def changeset :update, model, params \\ :empty  do
+    model
     |> cast(params, @required_fields, @optional_fields)
   end
 
