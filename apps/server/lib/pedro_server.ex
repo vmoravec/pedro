@@ -32,22 +32,23 @@ defmodule Pedro.Server do
   end
 
   def update_node_in_repo do
-    case Node.get_current do
+    node = case Node.current do
       nil     -> insert_node_to_repo
-      %Node{} -> update_node_start_time
+      %Node{} -> Node.mark_current_as_started
       err     -> raise "Could not have loaded pedro node from db: #{inspect err}"
     end
+    {:ok, node } = node
+    :net_kernel.start([String.to_atom(node.name), :shortnames])
   end
 
   def insert_node_to_repo do
     node_name = Application.get_env(:pedro_server, :node_name)
-    node_type = Application.get_env(:pedro_server, :node_type)
-    Node.insert_node(node_name, node_type)
-
+    new_node = Node.create(%{
+      name: node_name,
+      type: Application.get_env(:pedro_server, :node_type)
+    })
     :net_kernel.start([String.to_atom(node_name), :shortnames])
+    new_node
   end
 
-  def update_node_start_time do
-    Node.mark_started
-  end
 end

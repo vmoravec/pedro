@@ -17,10 +17,10 @@ defmodule Pedro.Router do
     pipe_through :browser # Use the default browser stack
 
     get "/", PageController, :index
+    get "/status", PageController, :status
   end
 
-  # Other scopes may use custom stacks.
-  # scope "/api", Pedro do
-  #   pipe_through :api
-  # end
+  scope "/api/v1", Pedro do
+    pipe_through :api
+  end
 end

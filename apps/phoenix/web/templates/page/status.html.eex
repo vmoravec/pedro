@@ -1,0 +1,5 @@
+<div class="jumbotron">
+  <h2>Welcome to Pedro</h2>
+  <p class="lead">A productive task manager</>
+</div>
+<p><a href="<%= page_path @conn, :index %>">Link back to this page</a></p>

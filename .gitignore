@@ -2,3 +2,4 @@ mix.lock
 deps/
 *.tar
 _build/
+*.log
