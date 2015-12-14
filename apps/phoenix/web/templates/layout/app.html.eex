@@ -137,7 +137,7 @@
             <div class="collapse navbar-collapse navbar-ex1-collapse">
                 <ul class="nav navbar-nav side-nav">
                     <li>
-                        <a href="javascript:;" data-toggle="collapse" data-target="#projects"><i class="fa fa-fw fa-flask"></i> Projects </a>
+                        <a href="#projects" data-toggle="collapse" data-target="#projects"><i class="fa fa-fw fa-flask"></i> Projects </a>
                         <ul id="projects" class="collapse">
                             <li class="pedro-item">
                                 <a href="#">Fotky pre Malinu</a>
@@ -148,10 +148,7 @@
                         </ul>
                     </li>
                     <li>
-                        <a href="/tasks"><i class="fa fa-fw fa-tasks"></i> Tasks</a>
-                    </li>
-                    <li>
-                        <a href="/tasks"><i class="fa fa-fw fa-calendar"></i> Schedule</a>
+                        <a href="/tasks"><i class="fa fa-fw fa-hand-spock-o"></i> Tasks</a>
                     </li>
                     <li>
                         <a href="/projects"><i class="fa fa-fw fa-location-arrow "></i> Upstream</a>
@@ -160,7 +157,19 @@
                         <a href="/bookmarks"><i class="fa fa-fw fa-bookmark-o"></i> Bookmarks</a>
                     </li>
                     <li>
-                        <a href="/status"><i class="fa fa-fw fa-cog"></i> Status</a>
+                        <a href="/status"><i class="fa fa-fw fa-fire"></i> Status</a>
+                    </li>
+                    <li>
+                        <a href="/status"><i class="fa fa-fw fa-male"></i> Workers</a>
+                    </li>
+                    <li>
+                        <a href="/status"><i class="fa fa-fw fa-bars"></i> VMs</a >
+                    </li>
+                    <li>
+                        <a href="/status"><i class="fa fa-fw fa-cubes"></i> Containers</a >
+                    </li>
+                    <li>
+                        <a href="/status"><i class="fa fa-fw fa-database"></i> Storage</a >
                     </li>
                 </ul>
             </div>

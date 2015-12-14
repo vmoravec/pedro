@@ -22,8 +22,18 @@
   color: #ffffff;
 }
 
+
+.side-nav li a {
+  color: #eaab00;
+}
+
 .side-nav li a:hover,
 .side-nav li a:focus {
     outline: none;
     background-color: #AA3939 !important;
 }
+
+.fa {
+  color: #eaab00;
+}
+
