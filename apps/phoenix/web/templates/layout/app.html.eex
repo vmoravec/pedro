@@ -137,24 +137,18 @@
             <div class="collapse navbar-collapse navbar-ex1-collapse">
                 <ul class="nav navbar-nav side-nav">
                     <li>
-                        <a href="#projects" data-toggle="collapse" data-target="#projects"><i class="fa fa-fw fa-flask"></i> Projects </a>
-                        <ul id="projects" class="collapse">
+                        <a href="#tasks" data-toggle="collapse" data-target="#tasks"><i class="fa fa-fw fa-flask"></i> Tasks</a>
+                        <ul id="tasks" class="collapse">
                             <li class="pedro-item">
-                                <a href="#">Fotky pre Malinu</a>
+                                <a href="#">Cloud</a>
                             </li>
                             <li class="pedro-item">
-                                <a href="#">Mp3jky pre Malinu</a>
+                                <a href="#">Yast</a>
                             </li>
                         </ul>
                     </li>
                     <li>
-                        <a href="/tasks"><i class="fa fa-fw fa-hand-spock-o"></i> Tasks</a>
-                    </li>
-                    <li>
-                        <a href="/projects"><i class="fa fa-fw fa-location-arrow "></i> Upstream</a>
-                    </li>
-                    <li>
-                        <a href="/bookmarks"><i class="fa fa-fw fa-bookmark-o"></i> Bookmarks</a>
+                        <a href="/upstream"><i class="fa fa-fw fa-location-arrow "></i> Upstream</a>
                     </li>
                     <li>
                         <a href="/status"><i class="fa fa-fw fa-fire"></i> Status</a>
