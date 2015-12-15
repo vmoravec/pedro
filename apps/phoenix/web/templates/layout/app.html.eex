@@ -140,10 +140,26 @@
                         <a href="#tasks" data-toggle="collapse" data-target="#tasks"><i class="fa fa-fw fa-flask"></i> Tasks</a>
                         <ul id="tasks" class="collapse">
                             <li class="pedro-item">
-                                <a href="#">Cloud</a>
+                                <a href="javascript:;" data-toggle="collapse" data-target="#cloud"><i class="fa fa-fw fa-cloud "></i> Cloud<i class="fa fa-fw"></i></a>
+                                <ul id="cloud" class="collapse">
+                                    <li class="pedro-task">
+                                        <a href="#"><i class="fa fa-fw fa-toggle-off"></i> mkcloud</a>
+                                    </li>
+                                    <li class="pedro-task">
+                                      <a href="#"><i class="fa fa-fw fa-toggle-on"></i> upstream</a>
+                                    </li>
+                                </ul>
                             </li>
                             <li class="pedro-item">
-                                <a href="#">Yast</a>
+                                <a href="javascript:;" data-toggle="collapse" data-target="#demo"><i class="fa fa-fw fa-trophy "></i> Yast<i class="fa fa-fw"></i></a>
+                                <ul id="demo" class="collapse">
+                                    <li>
+                                        <a href="#"> yast-rake</a>
+                                    </li>
+                                    <li>
+                                        <a href="#"> yast-network</a>
+                                    </li>
+                                </ul>
                             </li>
                         </ul>
                     </li>
@@ -155,6 +171,9 @@
                     </li>
                     <li>
                         <a href="/status"><i class="fa fa-fw fa-male"></i> Workers</a>
+                    </li>
+                    <li>
+                        <a href="/status"><i class="fa fa-fw fa-cloud"></i> Cloud</a>
                     </li>
                     <li>
                         <a href="/status"><i class="fa fa-fw fa-bars"></i> VMs</a >

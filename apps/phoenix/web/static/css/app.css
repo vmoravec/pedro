@@ -6,16 +6,14 @@
   font-weight: bold;
 }
 
-.pedro-item {
-  background-color: #eeeeee;
-  line-height: .2em;
+.pedro-task {
+  list-style: none;
+  padding-left: 30px;
 }
 
 .pedro-item a {
-  color: #000 !important;
   font-weight: normal;
   font-family: verdana;
-  font-size: 0.9em;
 }
 
 .pedro-item a:hover {
@@ -29,11 +27,10 @@
 
 .side-nav li a:hover,
 .side-nav li a:focus {
-    outline: none;
-    background-color: #AA3939 !important;
 }
 
 .fa {
   color: #eaab00;
+
 }
 
