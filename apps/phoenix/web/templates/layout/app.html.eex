@@ -142,6 +142,9 @@
                             <li class="pedro-item">
                                 <a href="javascript:;" data-toggle="collapse" data-target="#cloud"><i class="fa fa-fw fa-cloud "></i> Cloud<i class="fa fa-fw"></i></a>
                                 <ul id="cloud" class="collapse">
+                                    <li class="pedro-task dashboard">
+                                        <a href="#"><i class="fa fa-fw fa-bars"></i> dashboard</a>
+                                    </li>
                                     <li class="pedro-task">
                                         <a href="#"><i class="fa fa-fw fa-toggle-off"></i> mkcloud</a>
                                     </li>
@@ -151,13 +154,16 @@
                                 </ul>
                             </li>
                             <li class="pedro-item">
-                                <a href="javascript:;" data-toggle="collapse" data-target="#demo"><i class="fa fa-fw fa-trophy "></i> Yast<i class="fa fa-fw"></i></a>
+                                <a href="javascript:;" data-toggle="collapse" data-target="#demo"><i class="fa fa-fw fa-cloud"></i> Cloud QA<i class="fa fa-fw"></i></a>
                                 <ul id="demo" class="collapse">
-                                    <li>
-                                        <a href="#"> yast-rake</a>
+                                    <li class="pedro-task dashboard">
+                                        <a href="#"><i class="fa fa-fw fa-bars"></i> dashboard</a>
                                     </li>
-                                    <li>
-                                        <a href="#"> yast-network</a>
+                                    <li class="pedro-task">
+                                        <a href="#"><i class="fa fa-fw fa-toggle-off"></i> yast-rake</a>
+                                    </li>
+                                    <li class="pedro-task">
+                                        <a href="#"><i class="fa fa-fw fa-toggle-off"></i> yast-network</a>
                                     </li>
                                 </ul>
                             </li>

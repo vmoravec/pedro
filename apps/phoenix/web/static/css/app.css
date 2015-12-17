@@ -11,6 +11,17 @@
   padding-left: 30px;
 }
 
+.pedro-task a {
+  display: block;
+}
+
+.pedro-task a:hover {
+  text-decoration: none;
+}
+
+.pedro-task .dashboard {
+}
+
 .pedro-item a {
   font-weight: normal;
   font-family: verdana;
