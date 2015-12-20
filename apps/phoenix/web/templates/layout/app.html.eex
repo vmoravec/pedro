@@ -140,10 +140,11 @@
                         <a href="#tasks" data-toggle="collapse" data-target="#tasks"><i class="fa fa-fw fa-flask"></i> Tasks</a>
                         <ul id="tasks" class="collapse">
                             <li class="pedro-item">
-                                <a href="javascript:;" data-toggle="collapse" data-target="#cloud"><i class="fa fa-fw fa-cloud "></i> Cloud<i class="fa fa-fw"></i></a>
+                              <a href="javascript:;" data-toggle="collapse" data-target="#cloud"><i class="fa fa-fw fa-cloud "></i>
+                                Cloud<i class="fa fa-fw"></i></a>
                                 <ul id="cloud" class="collapse">
-                                    <li class="pedro-task dashboard">
-                                        <a href="#"><i class="fa fa-fw fa-bars"></i> dashboard</a>
+                                    <li class="pedro-task pedro-task-topic">
+                                        <a href="#"><i class="fa fa-fw fa-line-chart"></i> dashboard</a>
                                     </li>
                                     <li class="pedro-task">
                                         <a href="#"><i class="fa fa-fw fa-toggle-off"></i> mkcloud</a>
@@ -154,8 +155,30 @@
                                 </ul>
                             </li>
                             <li class="pedro-item">
-                                <a href="javascript:;" data-toggle="collapse" data-target="#demo"><i class="fa fa-fw fa-cloud"></i> Cloud QA<i class="fa fa-fw"></i></a>
+                              <a href="javascript:;" data-toggle="collapse" data-target="#demo"><i class="fa fa-fw fa-cloud"></i>
+                                Cloud QA</a>
                                 <ul id="demo" class="collapse">
+                                    <li class="pedro-task pedro-task-topic">
+                                        <a href="#"><i class="fa fa-fw fa-line-chart"></i> dashboard</a>
+                                    </li>
+                                    <li class="pedro-task pedro-task-topic">
+                                        <a href="#"><i class="fa fa-fw fa-flag"></i> triggers</a>
+                                    </li>
+                                    <li class="pedro-task pedro-task-topic">
+                                        <a href="#"><i class="fa fa-fw fa-tasks"></i> builds</a>
+                                    </li>
+                                    <li class="pedro-task">
+                                        <a href="#"><i class="fa fa-fw fa-toggle-off"></i> 2b-ha-kvm</a>
+                                    </li>
+                                    <li class="pedro-task">
+                                        <a href="#"><i class="fa fa-fw fa-toggle-off"></i> 2c-ha-ceph-kvm</a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li class="pedro-item">
+                              <a href="javascript:;" data-toggle="collapse" data-target="#yast"><i class="fa fa-fw fa-bicycle"></i>
+                                Yast</a>
+                                <ul id="yast" class="collapse">
                                     <li class="pedro-task dashboard">
                                         <a href="#"><i class="fa fa-fw fa-bars"></i> dashboard</a>
                                     </li>
@@ -170,22 +193,19 @@
                         </ul>
                     </li>
                     <li>
-                        <a href="/upstream"><i class="fa fa-fw fa-location-arrow "></i> Upstream</a>
+                        <a href="/upstream"><i class="fa fa-fw fa-location-arrow "></i> Upstream<span class="badge badge-outline">8</span></a>
                     </li>
                     <li>
                         <a href="/status"><i class="fa fa-fw fa-fire"></i> Status</a>
                     </li>
                     <li>
-                        <a href="/status"><i class="fa fa-fw fa-male"></i> Workers</a>
+                      <a href="/status"><i class="fa fa-fw fa-male"></i> Workers<span class="badge badge-outline">1</span></a>
                     </li>
                     <li>
-                        <a href="/status"><i class="fa fa-fw fa-cloud"></i> Cloud</a>
+                        <a href="/status"><i class="fa fa-fw fa-bars"></i> VMs<span class="badge badge-outline">2</span></a >
                     </li>
                     <li>
-                        <a href="/status"><i class="fa fa-fw fa-bars"></i> VMs</a >
-                    </li>
-                    <li>
-                        <a href="/status"><i class="fa fa-fw fa-cubes"></i> Containers</a >
+                        <a href="/status"><i class="fa fa-fw fa-cubes"></i> Containers<span class="badge badge-outline">3</span></a >
                     </li>
                     <li>
                         <a href="/status"><i class="fa fa-fw fa-database"></i> Storage</a >
@@ -200,7 +220,7 @@
             <div class="container-fluid">
                 <%= @inner %>
 
-                <!-- Page Heading -->
+                <!--
                 <div class="row">
                     <div class="col-lg-12">
                         <h1 class="page-header">
@@ -217,6 +237,7 @@
                         </ol>
                     </div>
                 </div>
+                -->
                 <!-- /.row -->
 
             </div>

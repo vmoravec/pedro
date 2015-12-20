@@ -22,6 +22,16 @@
 .pedro-task .dashboard {
 }
 
+.pedro-task-topic a,
+.pedro-task-topic a i{
+  color: #999 !important;
+}
+
+.pedro-topic-nav a,
+.pedro-topic-nav a i {
+  color: #777777;
+}
+
 .pedro-item a {
   font-weight: normal;
   font-family: verdana;
@@ -45,3 +55,19 @@
 
 }
 
+.side-nav .badge {
+  background-color: #eaab00;
+
+}
+
+.side-nav .badge-outline {
+  margin-left: 10px;
+  color: #999;
+  border: 1px solid #999;
+  background-color: transparent;
+}
+
+.container-fluid {
+  padding-left: 5px;
+
+}
